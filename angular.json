@@ -71,7 +71,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "defaultConfiguration": "development",
           "options": {
-            "browserTarget": "intro-storybook-angular-template:build",
+            "browserTarget": "intro-storybook-angular-template:build"
           },
           "configurations": {
             "production": {
@@ -102,6 +102,28 @@
             ]
           }
         },
+        "build-custom": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            },
+            "outputPath": "dist/intro-storybook-angular-template",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
@@ -111,7 +133,6 @@
             "styles": [ "src/styles.css" ],
             "compodoc": true,
             "port": 6006,
-            "defaultConfig": "development",
             "quiet": false
           }
         }
